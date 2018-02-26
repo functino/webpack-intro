@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ZopfliPlugin = require('zopfli-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -44,6 +45,7 @@ module.exports = {
         new ExtractTextPlugin('main.[hash].css'),
         isProd ? new UglifyJsPlugin() : noop,
         isProd ? new ZopfliPlugin() : noop,
-        process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop
+        process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop,
+        new CleanPlugin(['dist'])
     ]
 };
