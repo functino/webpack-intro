@@ -1,13 +1,26 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import ellipsize from 'ellipsize';
+
 import hotel from './hotel';
 
-document.getElementById('root').innerHTML = '<button id="showButton">Show Hotel</button>';
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hotel: false
+        };
+    }
+    render() {
+        if (this.state.hotel) {
+            const { name, description } = this.state.hotel;
+            return (<div>
+                <h1>{name}</h1>
+                <p>{ellipsize(description)}</p>
+            </div>);
+        }
+        return (<button onClick={() => this.setState({ hotel: hotel })}>Show Hotel</button>);
+    }
+}
 
-document.getElementById('showButton').addEventListener('click', () => {
-    const { name, description } = hotel;
-    const html = `<div>
-        <h1>${name}</h1>
-        <p>${ellipsize(description, 50)}</p>
-    </div>`;
-    document.getElementById('root').innerHTML = html;
-});
+ReactDOM.render(<App />, document.getElementById('root'));
