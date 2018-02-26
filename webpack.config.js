@@ -7,6 +7,7 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
+    stats: "errors-only",
     module: {
         loaders: [
             {
