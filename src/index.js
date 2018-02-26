@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ellipsize from 'ellipsize';
 
-import hotel from './hotel';
 import './index.scss';
 
 class App extends React.Component {
@@ -12,6 +11,11 @@ class App extends React.Component {
             hotel: false
         };
     }
+    showHotel() {
+        import('./hotel').then((hotel) => {
+            this.setState({ hotel: hotel });
+        });
+    }
     render() {
         if (this.state.hotel) {
             const { name, description } = this.state.hotel;
@@ -20,7 +24,7 @@ class App extends React.Component {
                 <p>{ellipsize(description)}</p>
             </div>);
         }
-        return (<button onClick={() => this.setState({ hotel: hotel })}>Show Hotel</button>);
+        return (<button onClick={this.showHotel.bind(this)}>Show Hotel</button>);
     }
 }
 
