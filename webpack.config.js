@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -40,6 +41,7 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin('main.css'),
+        isProd ? new UglifyJsPlugin() : noop,
         process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop
     ]
 };
