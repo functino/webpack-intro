@@ -53,6 +53,12 @@ module.exports = {
         new AssetsByTypePlugin({
             path: path.join(__dirname, "dist/assets.json")
         }),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            minChunks: (m) => {
+                return /node_modules/.test(m.context)
+            }
+        })
     ]
 };
