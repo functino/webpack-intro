@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ellipsize from 'ellipsize';
 
 import hotel from './hotel';
+import './index.scss';
 
 class App extends React.Component {
     constructor(props) {
