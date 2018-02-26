@@ -1,6 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
     entry: './src/index',
     output: {
@@ -8,6 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     stats: "errors-only",
+    devtool: isProd ? "false" : "eval",
     module: {
         loaders: [
             {
