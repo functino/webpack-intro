@@ -1,7 +1,10 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isProd = process.env.NODE_ENV === 'production';
+
+const noop = function() {};
 
 module.exports = {
     entry: './src/index',
@@ -30,6 +33,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('main.css')
+        new ExtractTextPlugin('main.css'),
+        process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop
     ]
 };
