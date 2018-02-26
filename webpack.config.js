@@ -4,6 +4,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ZopfliPlugin = require('zopfli-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const AssetsByTypePlugin = require('webpack-assets-by-type-plugin');
 const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -46,6 +47,9 @@ module.exports = {
         isProd ? new UglifyJsPlugin() : noop,
         isProd ? new ZopfliPlugin() : noop,
         process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop,
-        new CleanPlugin(['dist'])
+        new CleanPlugin(['dist']),
+        new AssetsByTypePlugin({
+            path: path.join(__dirname, "dist/assets.json")
+        }),
     ]
 };
