@@ -1,4 +1,5 @@
 var ellipsize = require('ellipsize');
+var hotel = require('./hotel');
 
 document.getElementById('root').innerHTML = '<button id="showButton">Show Hotel</button>';
 
