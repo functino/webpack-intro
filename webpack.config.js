@@ -12,7 +12,7 @@ const noop = function() {};
 module.exports = {
     entry: './src/index',
     output: {
-        filename: 'main.js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
     stats: "errors-only",
@@ -41,7 +41,7 @@ module.exports = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
         }),
-        new ExtractTextPlugin('main.css'),
+        new ExtractTextPlugin('main.[hash].css'),
         isProd ? new UglifyJsPlugin() : noop,
         isProd ? new ZopfliPlugin() : noop,
         process.env.ANALYZE ? new BundleAnalyzerPlugin() : noop
