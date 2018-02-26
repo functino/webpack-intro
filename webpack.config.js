@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ZopfliPlugin = require('zopfli-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const AssetsByTypePlugin = require('webpack-assets-by-type-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -51,5 +52,6 @@ module.exports = {
         new AssetsByTypePlugin({
             path: path.join(__dirname, "dist/assets.json")
         }),
+        new HtmlWebpackPlugin()
     ]
 };

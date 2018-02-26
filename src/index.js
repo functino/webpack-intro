@@ -24,4 +24,5 @@ class App extends React.Component {
     }
 }
 
+document.body.innerHTML = '<div id="root"></div>';
 ReactDOM.render(<App />, document.getElementById('root'));
