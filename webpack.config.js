@@ -4,5 +4,13 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                use: 'babel-loader'
+            }
+        ]
     }
 };
