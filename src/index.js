@@ -4,5 +4,9 @@ var hotel = {
     description: 'Das modern ausgestattete 5-Sterne-Hotel Dana Beach Resort liegt direkt am eigenen Sandstrand, erbaut in einem einzigartigen Stil, mit hohem Komfort, mit bestem Service und einem umfangreichen Sport- & Freizeitangebot.'
 };
 
-var html = '<div><h1>' + hotel.name + '</h1><p>' + hotel.description + '</p></div>';
-document.getElementById('root').innerHTML = html;
+document.getElementById('root').innerHTML = '<button id="showButton">Show Hotel</button>';
+
+document.getElementById('showButton').addEventListener('click', function() {
+    var html = '<div><h1>' + hotel.name + '</h1><p>' + hotel.description + '</p></div>';
+    document.getElementById('root').innerHTML = html;
+});
