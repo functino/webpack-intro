@@ -59,6 +59,11 @@ module.exports = {
             minChunks: (m) => {
                 return /node_modules/.test(m.context)
             }
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+          name: "manifest",
+          minChunks: Infinity
+        }),
+        new webpack.NamedModulesPlugin()        
     ]
 };
